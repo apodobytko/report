@@ -39,7 +39,7 @@ d3.gantt = function() {
 
     var initTimeDomain = function(tasks) {
         if (timeDomainMode === FIT_TIME_DOMAIN_MODE) {
-            if (tasks === undefined || tasks.length & lt; 1) {
+            if (tasks === undefined || tasks.length < 1) {
                 timeDomainStart = d3.time.day.offset(new Date(), -3);
                 timeDomainEnd = d3.time.hour.offset(new Date(), +3);
                 return;
