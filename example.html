@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test Results Report</title>
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="gannt.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
+
+<script type="text/javascript" src="example_data.js"></script>
+<script>$(() => $('div.gannt').html(JSON.stringify(example_data)));</script>
+
+<script type="text/javascript" src="filters.js"></script>
+<script type="text/javascript" src="gannt.js"></script>
+<script type="text/javascript" src="gannt_chart.js"></script>
+
+</head>
+<body>
+<h3 class="divided"><b>Results for Staging</b></h3>
+<div class="btn-group">
+<a href="#info1" id="inline" class="button fancybox">Run log</a><div class="info-wrap"><div id="info1"><p><pre>
+..................................................................................................Running 193 tests.
+----------------------------------------------------------------------
+Ran 190 tests in 872.129s
+FAILED (errors=11)
+</pre></p></div></div>
+<a href="#info2" class="button fancybox">Rerun log</a><div class="info-wrap"><div id="info2"><p><pre>Running 10 tests.
+----------------------------------------------------------------------
+XML: results_rerun.xml
+----------------------------------------------------------------------
+Ran 10 tests in 87.658s
+OK
+</pre></p></div></div>
+<a href="#info3" class="button fancybox" onclick="return ganntChart();">Gannt chart</a><div class="info-wrap"><div id="info3">
+<div class="gannt" style="display: none;"></div>
+<div class="chart"></div>
+</div></div>
+</div>
+</body>
+</html>

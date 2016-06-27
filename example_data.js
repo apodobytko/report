@@ -1,4 +1,4 @@
-{
+var example_data = {
     "processes": 64,
     "tests": [
         {
@@ -1739,4 +1739,4 @@
             "time": 22.676
         }
     ]
-}
+};

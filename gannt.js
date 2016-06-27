@@ -68,7 +68,7 @@ d3.gantt = function() {
 
         initTimeDomain(tasks);
         initAxis();
-        $(selector).html('');
+        $(selector).find('svg').remove();
 
         var svg = d3.select(selector)
             .append("svg")
