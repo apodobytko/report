@@ -113,10 +113,7 @@ d3.gantt = function() {
             .attr("width", function(d) {
                 return (x(d.endDate) - x(d.startDate));
             })
-            .on('mouseover', () => {
-                debugger;
-                tip.show();
-            })
+            .on('mouseover', tip.show)
             .on('mouseout', tip.hide);
 
 
