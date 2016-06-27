@@ -1,0 +1,100 @@
+body {
+    font-family: monospace;
+}
+.testcases {
+    border: 1px solid black;
+    padding: 10px;
+}
+.filters {
+    margin: 10px 0 0 0;
+}
+.case-wrap {
+    border-bottom: 1px solid #aaa;
+}
+.failed {
+    display: block;
+}
+.failed a {
+    color: red;
+    font-weight: bold;
+}
+.passed {
+    display: block;
+}
+.passed a {
+    color: green;
+    font-weight: bold;
+}
+.skipped {
+    display: block;
+}
+.skipped a {
+    color: #F8C45C;
+    font-weight: bold;
+}
+.passed-message {
+    border: 1px solid green;
+}
+.error-message {
+    border: 1px solid red;
+}
+.skip-message {
+    border: 1px solid #F8C45C;
+}
+.image {
+    width: 320px;
+    height: 240px;
+}
+pre {
+    margin: 5px 0;
+}
+.case-wrap {
+    padding: 5px 0;
+}
+.sh-link {
+    display: inline-block;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 20px;
+}
+.sh-link.show-link {
+    display: inline-block;
+}
+.sh-link.hide-link {
+    display: none;
+}
+.info-box {
+    display: none;
+}
+.passed .show-link,
+.passed .hide-link {
+    color: green;
+}
+.failed .show-link,
+.failed .hide-link {
+    color: red;
+}
+.skipped .show-link,
+.skipped .hide-link {
+    color: #F8C45C;
+}
+.btn-group {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+.button {
+    display: inline-block;
+    background-color: #f7f7f7;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px 5px;
+}
+.button:hover {
+    background-color: #e7e7e7;
+}
+.info-wrap {
+    display: none;
+}

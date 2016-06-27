@@ -1,0 +1,54 @@
+div.chart,
+#wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+svg.chart {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+}
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.bar {
+    fill: #37CD3C;
+}
+.bar-failed {
+    fill: #CC0000;
+}
+.bar-skipped {
+    fill: #ffbb33;
+}
+.bar-passed_slow {
+    fill: #ffd580;
+}
+.d3-tip {
+    line-height: 1;
+    padding: 11px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 2px;
+}
+.d3-tip:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    position: absolute;
+    text-align: center;
+}
+.d3-tip.n:after {
+    margin: -1px 0 0 0;
+    top: 100%;
+    left: 0;
+}
+*[class^="bar"]:hover {
+    fill: #33b5e5;
+}
