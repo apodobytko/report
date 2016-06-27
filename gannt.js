@@ -15,7 +15,7 @@ d3.gantt = function() {
     var timeDomainMode = FIT_TIME_DOMAIN_MODE; // fixed or fit
     var taskTypes = [];
     var taskStatus = [];
-    var height = $(window).height() - margin.top - margin.bottom - 5;
+    var height = $(window).height() - margin.top - margin.bottom - 100;
     var width = $(window).width() - margin.right - margin.left - 5;
 
     var tickFormat = "%H:%M:%S";
