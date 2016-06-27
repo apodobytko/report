@@ -84,14 +84,12 @@ d3.gantt = function() {
         var tip = d3.tip()
             .attr('class', 'd3-tip')
             .offset([-10, 0])
-            .html(function(d) {
+            .html((d) => {
                 var green = "#37CD3C";
                 var color = (d.time > 60 ? "red" : green);
-                return "<strong>Time:</strong> <span style='color:" + color + "'>" + d.time + "s" + "</span></br>"
-                "<strong>Test Name:</strong> <span style='color:#B0B0B0'>" + d.name + "</span></br>"
-                "<strong>Description:</strong> <span style='color:#B0B0B0'>" + d.description + "</span>"
-
-                ;
+                return `<strong>Time:</strong><span style='color:${color}'>${d.time}s</span></br>
+                <strong>Test Name:</strong> <span style='color:#B0B0B0'>${d.name}</span></br>
+                <strong>Description:</strong> <span style='color:#B0B0B0'>${d.description}</span>`;
             })
 
         svg.call(tip);
@@ -115,7 +113,10 @@ d3.gantt = function() {
             .attr("width", function(d) {
                 return (x(d.endDate) - x(d.startDate));
             })
-            .on('mouseover', tip.show)
+            .on('mouseover', () => {
+                debugger;
+                tip.show();
+            })
             .on('mouseout', tip.hide);
 
 
