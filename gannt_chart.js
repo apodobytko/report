@@ -16,7 +16,7 @@ function ganntChart() {
         test.status = test.state;
         test.taskName = test.process;
 
-        if (test.time > 60) {
+        if (test.time > 60 && test.status == "passed") {
             test.status = "passed_slow";
         }
     });
