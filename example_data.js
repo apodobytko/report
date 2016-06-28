@@ -1,4 +1,4 @@
-var example_data = {
+const example_data = {
     "processes": 64,
     "tests": [
         {

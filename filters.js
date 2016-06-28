@@ -1,13 +1,13 @@
-$(document).ready(function() {
-    $(".display-message").click(function() {
+$(document).ready(() => {
+    $(".display-message").click(() => {
 
     });
     $(".filter").change(function(event) {
-        var self = $(this);
+        const self = $(this);
         $('.filter option:selected').each(function() {
             $('.testcases div.case-wrap').show();
             if ($(this).val() != 'all') {
-                $('.testcases div[class != "case-wrap ' + $(this).val() + '"][class!="error-message"]').each(function() {
+                $(`.testcases div[class != "case-wrap ${$(this).val()}"][class!="error-message"]`).each(function() {
                     $(this).hide();
                     $('.show-link').attr('style', 'display: inline-block;');
                     $('.hide-link').attr('style', 'display: none;');

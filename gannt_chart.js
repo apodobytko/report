@@ -1,15 +1,15 @@
 function ganntChart() {
 
-    var data = JSON.parse($('.gannt').text())
-    var tests = data.tests
-    var testStatus = {
+    const data = JSON.parse($('.gannt').text());
+    const tests = data.tests;
+    const testStatus = {
         "passed": "bar",
         "failed": "bar-failed",
         "skipped": "bar-skipped",
         "passed_slow": "bar-passed_slow",
     };
 
-    tests.forEach(function(test) {
+    tests.forEach(test => {
         test.startDate = new Date(test.started);
         test.endDate = new Date(test.ended);
         test.name = test.name.replace("TestCase", "");
@@ -21,23 +21,19 @@ function ganntChart() {
         }
     });
 
-    tests.sort(function(a, b) {
-        return a.endDate - b.endDate;
-    });
-    var maxDate = tests[tests.length - 1].endDate;
-    tests.sort(function(a, b) {
-        return a.startDate - b.startDate;
-    });
-    var minDate = tests[0].startDate;
+    tests.sort((a, b) => a.endDate - b.endDate);
+    const maxDate = tests[tests.length - 1].endDate;
+    tests.sort((a, b) => a.startDate - b.startDate);
+    const minDate = tests[0].startDate;
 
-    var format = "%H:%M:%S";
+    const format = "%H:%M:%S";
 
-    var processes = new Array();
-    tests.forEach(function(test) {
+    const processes = new Array();
+    tests.forEach(test => {
         processes.push(test.process);
     });
 
 
-    var gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
+    const gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
     gantt(tests);
 };
