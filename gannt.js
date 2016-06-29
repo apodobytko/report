@@ -50,7 +50,9 @@ d3.gantt = () => {
     const initAxis = () => {
         x = d3.time.scale().domain([timeDomainStart, timeDomainEnd]).range([0, width]).clamp(true);
         y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([0, height - margin.top - margin.bottom], .1);
-        xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
+        xAxis = d3.svg.axis().scale(x).orient("bottom")
+            .ticks(d3.time.minutes, 5) // size of ticks
+            .tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
             .tickSize(8).tickPadding(8);
 
         yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
