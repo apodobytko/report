@@ -50,13 +50,15 @@ d3.gantt = () => {
     const initAxis = () => {
         x = d3.time.scale().domain([timeDomainStart, timeDomainEnd]).range([0, width]).clamp(true);
         y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([0, height - margin.top - margin.bottom], .1);
-        xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
+        xAxis = d3.svg.axis().scale(x).orient("bottom")
+            .ticks(d3.time.minutes, 5) // size of ticks
+            .tickFormat(d3.time.format(tickFormat)).tickSubdivide(true)
             .tickSize(8).tickPadding(8);
 
         yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
     };
 
-    class gantt {
+    class Gantt {
         constructor(tasks) {
 
             initTimeDomain(tasks);
@@ -69,7 +71,7 @@ d3.gantt = () => {
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .append("g")
-                .attr("class", "gantt-chart")
+                .attr("class", "Gantt-chart")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .attr("transform", `translate(${margin.left}, ${margin.top})`);
@@ -114,7 +116,18 @@ d3.gantt = () => {
 
             svg.append("g").attr("class", "y axis").transition().call(yAxis);
 
-            return gantt;
+
+            const verticalLine = svg.append('line')
+              .attr({ 'x1': 0, 'y1': 0, 'x2': 0, 'y2': height - margin.top })
+              .attr("stroke", "steelblue")
+              .attr('class', 'verticalLine');
+
+            svg.on('mousemove', function () {
+                let xPos = d3.mouse(this)[0];
+                d3.select(".verticalLine").attr("transform", ()=> `translate(${xPos},0)`);
+            });
+
+            return Gantt;
 
         }
 
@@ -125,7 +138,7 @@ d3.gantt = () => {
 
             const svg = d3.select(".chart");
 
-            const ganttChartGroup = svg.select(".gantt-chart");
+            const ganttChartGroup = svg.select(".Gantt-chart");
             const rect = ganttChartGroup.selectAll("rect").data(tasks, keyFunction);
 
             rect.enter()
@@ -154,21 +167,21 @@ d3.gantt = () => {
             svg.select(".x").transition().call(xAxis);
             svg.select(".y").transition().call(yAxis);
 
-            return gantt;
+            return Gantt;
         }
 
         static margin(value) {
             if (!arguments.length)
                 return margin;
             margin = value;
-            return gantt;
+            return Gantt;
         }
 
         static timeDomain(value) {
             if (!arguments.length)
                 return [timeDomainStart, timeDomainEnd];
             timeDomainStart = +value[0], timeDomainEnd = +value[1];
-            return gantt;
+            return Gantt;
         }
 
         /**
@@ -180,7 +193,7 @@ d3.gantt = () => {
             if (!arguments.length)
                 return timeDomainMode;
             timeDomainMode = value;
-            return gantt;
+            return Gantt;
 
         }
 
@@ -188,44 +201,44 @@ d3.gantt = () => {
             if (!arguments.length)
                 return taskTypes;
             taskTypes = value;
-            return gantt;
+            return Gantt;
         }
 
         static taskStatus(value) {
             if (!arguments.length)
                 return taskStatus;
             taskStatus = value;
-            return gantt;
+            return Gantt;
         }
 
         static width(value) {
             if (!arguments.length)
                 return width;
             width = +value;
-            return gantt;
+            return Gantt;
         }
 
         static height(value) {
             if (!arguments.length)
                 return height;
             height = +value;
-            return gantt;
+            return Gantt;
         }
 
         static tickFormat(value) {
             if (!arguments.length)
                 return tickFormat;
             tickFormat = value;
-            return gantt;
+            return Gantt;
         }
 
         static selector(value) {
             if (!arguments.length)
                 return selector;
             selector = value;
-            return gantt;
+            return Gantt;
         }
     }
 
-    return gantt;
+    return Gantt;
 };
