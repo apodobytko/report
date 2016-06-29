@@ -34,6 +34,6 @@ function ganntChart() {
     });
 
 
-    const gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
-    gantt(tests);
+    const Gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
+    new Gantt(tests);
 };
