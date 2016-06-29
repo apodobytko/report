@@ -116,6 +116,17 @@ d3.gantt = () => {
 
             svg.append("g").attr("class", "y axis").transition().call(yAxis);
 
+
+            const verticalLine = svg.append('line')
+              .attr({ 'x1': 0, 'y1': 0, 'x2': 0, 'y2': height - margin.top })
+              .attr("stroke", "steelblue")
+              .attr('class', 'verticalLine');
+
+            svg.on('mousemove', function () {
+                let xPos = d3.mouse(this)[0];
+                d3.select(".verticalLine").attr("transform", ()=> `translate(${xPos},0)`);
+            });
+
             return Gantt;
 
         }
