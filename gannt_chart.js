@@ -1,4 +1,6 @@
+
 function ganntChart() {
+    const TIME_OFFSET = 180; // 180 minutes = 3 hours
 
     const data = JSON.parse($('.gannt').text());
     const tests = data.tests;
@@ -10,8 +12,9 @@ function ganntChart() {
     };
 
     tests.forEach(test => {
-        test.startDate = new Date(test.started);
-        test.endDate = new Date(test.ended);
+        // add timeoffset
+        test.startDate = new Date(+new Date(test.started) + TIME_OFFSET * 60 * 1000);
+        test.endDate = new Date(+new Date(test.ended) + TIME_OFFSET * 60 * 1000);
         test.name = test.name.replace("TestCase", "");
         test.status = test.state;
         test.taskName = test.process;
@@ -21,17 +24,9 @@ function ganntChart() {
         }
     });
 
-    tests.sort((a, b) => a.endDate - b.endDate);
-    const maxDate = tests[tests.length - 1].endDate;
     tests.sort((a, b) => a.startDate - b.startDate);
-    const minDate = tests[0].startDate;
-
     const format = "%H:%M:%S";
-
-    const processes = new Array();
-    tests.forEach(test => {
-        processes.push(test.process);
-    });
+    const processes = tests.map(test => test.process);
 
 
     const Gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);

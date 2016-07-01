@@ -122,9 +122,17 @@ d3.gantt = () => {
               .attr("stroke", "steelblue")
               .attr('class', 'verticalLine');
 
+            const verticalLineText = svg.append('text')
+              .attr({ x: 0, y :0 })
+              .attr('text-anchor', 'middle')
+              .style("font-size","18px")
+              .text('')
+              .attr('class', 'verticalLineText');
+
             svg.on('mousemove', function () {
                 let xPos = d3.mouse(this)[0];
                 d3.select(".verticalLine").attr("transform", ()=> `translate(${xPos},0)`);
+                d3.select(".verticalLineText").text(x.invert(xPos)).attr("x", xPos);
             });
 
             return Gantt;
