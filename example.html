@@ -4,6 +4,7 @@
 <title>Test Results Report</title>
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="gannt.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.10.3/babel.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
@@ -11,11 +12,11 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.min.js"></script>
 
 <script type="text/javascript" src="example_data.js"></script>
-<script>$(() => $('div.gannt').html(JSON.stringify(example_data)));</script>
+<script type="text/babel">$(() => $('div.gannt').html(JSON.stringify(example_data)));</script>
 
-<script type="text/javascript" src="filters.js"></script>
-<script type="text/javascript" src="gannt.js"></script>
-<script type="text/javascript" src="gannt_chart.js"></script>
+<script type="text/babel" src="filters.js"></script>
+<script type="text/babel" src="gannt.js"></script>
+<script type="text/babel" src="gannt_chart.js"></script>
 
 </head>
 <body>
