@@ -19,7 +19,7 @@ function ganntChart() {
         test.status = test.state;
         test.taskName = test.process;
 
-        if (test.time > 45 && test.status == "passed") {
+        if (test.time > 30 && test.status == "passed") {
             test.status = "passed_slow";
         }
     });
