@@ -98,3 +98,11 @@ pre {
 .info-wrap {
     display: none;
 }
+
+.info-tooltip-wrapper {
+    z-index: 8200;
+    position: fixed;
+    background-color: lightyellow;
+    top: 30px;
+    left: 30px;
+}
