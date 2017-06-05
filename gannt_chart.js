@@ -1,17 +1,18 @@
+"use strict";
 
 function ganntChart() {
-    const TIME_OFFSET = 180; // 180 minutes = 3 hours
+    var TIME_OFFSET = 180; // 180 minutes = 3 hours
 
-    const data = JSON.parse($('.gannt').text());
-    const tests = data.tests;
-    const testStatus = {
+    var data = JSON.parse($('.gannt').text());
+    var tests = data.tests;
+    var testStatus = {
         "passed": "bar",
         "failed": "bar-failed",
         "skipped": "bar-skipped",
-        "passed_slow": "bar-passed_slow",
+        "passed_slow": "bar-passed_slow"
     };
 
-    tests.forEach(test => {
+    tests.forEach(function (test) {
         // add timeoffset
         test.startDate = new Date(+new Date(test.started) + TIME_OFFSET * 60 * 1000);
         test.endDate = new Date(+new Date(test.ended) + TIME_OFFSET * 60 * 1000);
@@ -24,11 +25,14 @@ function ganntChart() {
         }
     });
 
-    tests.sort((a, b) => a.startDate - b.startDate);
-    const format = "%H:%M:%S";
-    const processes = tests.map(test => test.process);
+    tests.sort(function (a, b) {
+        return a.startDate - b.startDate;
+    });
+    var format = "%H:%M:%S";
+    var processes = tests.map(function (test) {
+        return test.process;
+    });
 
-
-    const Gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
+    var Gantt = d3.gantt().taskTypes(processes).taskStatus(testStatus).tickFormat(format);
     new Gantt(tests);
 };
