@@ -3,7 +3,7 @@
 function ganntChart() {
     var TIME_OFFSET = 180; // 180 minutes = 3 hours
 
-    var data = JSON.parse($('.gannt').text());
+    var data = JSON.parse($('<div></div>').html($('.gannt').text()).text().replace(/\n/g, ' '));
     var tests = data.tests;
     var testStatus = {
         "passed": "bar",
