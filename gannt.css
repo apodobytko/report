@@ -26,6 +26,9 @@ svg.chart {
 .bar-passed_slow {
     fill: #ffd580;
 }
+.bar-unknown {
+    fill: #d3d3d3;
+}
 .d3-tip {
     line-height: 1;
     padding: 11px;

@@ -9,7 +9,8 @@ function ganntChart() {
         "passed": "bar",
         "failed": "bar-failed",
         "skipped": "bar-skipped",
-        "passed_slow": "bar-passed_slow"
+        "passed_slow": "bar-passed_slow",
+        "unknown": "bar-unknown"
     };
 
     tests.forEach(function (test) {
