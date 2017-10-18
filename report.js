@@ -43,7 +43,7 @@ function getResultScreenShotHtml(result) {
   return `<pre>
     <b>Screenshot: </b>
     <a class="fancybox">
-      <img class="image" alt="" src="data:image/jpeg;base64,{{ result.screenshot }}"></img>
+      <img class="image" alt="" src="data:image/jpeg;base64,${result.screenshot}"></img>
     </a>
   </pre>`;
 }
