@@ -40,12 +40,7 @@ function getResultScreenShotHtml(result) {
   if (!result.screenshot) {
     return "";
   }
-  return `<pre>
-    <b>Screenshot: </b>
-    <a class="fancybox">
-      <img class="image" alt="" src="data:image/jpeg;base64,${result.screenshot}"></img>
-    </a>
-  </pre>`;
+  return `<pre><b>Screenshot: </b><a class="fancybox"><img class="image" alt="" src="data:image/jpeg;base64,${result.screenshot}"></img></a></pre>`;
 }
 
 function getResultErrorHtml(result) {
