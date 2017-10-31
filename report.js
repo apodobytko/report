@@ -32,7 +32,7 @@ function getResultTestRailCasesHtml(result) {
           .split("/")
           .pop()}</a>`
     )
-    .join("")}</pre>
+    .join(" ")}</pre>
   `;
 }
 
